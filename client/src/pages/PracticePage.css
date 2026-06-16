@@ -88,6 +88,21 @@
   box-shadow: 0 2px 12px rgba(124, 92, 252, 0.25);
 }
 
+.message .translation {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: rgba(160, 160, 192, 0.8);
+  font-style: italic;
+  border-top: 1px solid rgba(160, 160, 192, 0.15);
+  padding-top: 6px;
+  line-height: 1.4;
+}
+
+.message.user .translation {
+  color: rgba(255, 255, 255, 0.7);
+  border-top-color: rgba(255, 255, 255, 0.15);
+}
+
 .speaker {
   font-size: 0.7rem;
   font-weight: 700;

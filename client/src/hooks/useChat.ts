@@ -9,6 +9,7 @@ interface SpeechError {
 interface TranscriptMessage {
   speaker: 'ai' | 'user'
   text: string
+  translation?: string
 }
 
 const WS_BASE = `ws://${window.location.hostname}:8000/ws/chat`
@@ -38,7 +39,7 @@ export function useChat() {
 
       switch (data.type) {
         case 'transcript':
-          setTranscript((prev) => [...prev, { speaker: data.speaker, text: data.text }])
+          setTranscript((prev) => [...prev, { speaker: data.speaker, text: data.text, translation: data.translation || '' }])
           setStreamingText('')
           break
         case 'token':

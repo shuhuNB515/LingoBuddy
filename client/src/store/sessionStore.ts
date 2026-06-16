@@ -1,5 +1,17 @@
 import { create } from 'zustand'
 
+export interface TranscriptMessage {
+  speaker: 'ai' | 'user'
+  text: string
+  translation?: string
+}
+
+export interface SpeechError {
+  type: 'grammar' | 'vocabulary' | 'pronunciation'
+  original: string
+  suggestion: string
+}
+
 export interface Session {
   id: string
   scenarioId: string
@@ -7,6 +19,8 @@ export interface Session {
   cefrLevel: string
   date: string
   duration: number
+  transcript: TranscriptMessage[]
+  errors: SpeechError[]
 }
 
 interface SessionState {

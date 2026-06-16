@@ -34,9 +34,11 @@ export default function PracticePage() {
       cefrLevel: 'B1',
       date: new Date().toLocaleDateString(),
       duration: elapsed,
+      transcript: [...transcript],
+      errors: [...errors],
     })
     navigate(`/review/${sessionId}`)
-  }, [disconnect, scenarioId, elapsed, addSession, navigate])
+  }, [disconnect, scenarioId, elapsed, addSession, navigate, transcript, errors])
 
   const handleSend = useCallback(() => {
     const text = inputText.trim()
@@ -70,7 +72,7 @@ export default function PracticePage() {
     <div className="practice-page">
       <header className="practice-header">
         <button className="back-btn" onClick={() => { disconnect(); navigate('/') }}>
-          ← Back
+          ← 返回
         </button>
         <h2>{scenarioId?.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())}</h2>
         <div className="timer">{formatTime(elapsed)}</div>
@@ -81,8 +83,11 @@ export default function PracticePage() {
           <div className="transcript">
             {transcript.map((msg, i) => (
               <div key={i} className={`message ${msg.speaker}`}>
-                <span className="speaker">{msg.speaker === 'ai' ? 'AI' : 'You'}</span>
+                <span className="speaker">{msg.speaker === 'ai' ? 'AI' : '你'}</span>
                 <p>{msg.text}</p>
+                {msg.translation && (
+                  <p className="translation">{msg.translation}</p>
+                )}
               </div>
             ))}
             {streamingText && (
@@ -93,16 +98,16 @@ export default function PracticePage() {
             )}
             {transcript.length === 0 && !streamingText && (
               <div className="empty-state">
-                <p>Click "Start" to begin your practice session</p>
+                <p>点击「开始练习」开启对话</p>
               </div>
             )}
             <div ref={transcriptEndRef} />
           </div>
 
           <div className="error-panel">
-            <h3>Corrections</h3>
+            <h3>纠错记录</h3>
             {errors.length === 0 ? (
-              <p className="no-errors">No issues detected yet — keep going!</p>
+              <p className="no-errors">暂未检测到问题 — 继续加油！</p>
             ) : (
               errors.map((err, i) => <ErrorTag key={i} {...err} />)
             )}
@@ -112,7 +117,7 @@ export default function PracticePage() {
         <div className="controls">
           {!isRecording ? (
             <button className="btn-start" onClick={handleStart}>
-              Start Practice
+              开始练习
             </button>
           ) : (
             <>
@@ -120,24 +125,24 @@ export default function PracticePage() {
                 <input
                   type="text"
                   className="chat-input"
-                  placeholder="Type your response in English..."
+                  placeholder="用英语输入你的回复..."
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
                   onKeyDown={handleKeyDown}
                   disabled={!isConnected}
                 />
                 <button className="btn-send" onClick={handleSend} disabled={!isConnected || !inputText.trim()}>
-                  Send
+                  发送
                 </button>
               </div>
               <button className="btn-stop" onClick={handleStop}>
-                End Session
+                结束对话
               </button>
             </>
           )}
           <div className="status-indicator">
             <span className={`dot ${isConnected ? 'connected' : ''}`} />
-            {isConnected ? 'Connected' : 'Not connected'}
+            {isConnected ? '已连接' : '未连接'}
           </div>
         </div>
       </div>
