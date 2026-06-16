@@ -1,3 +1,5 @@
+import './ErrorTag.css'
+
 interface ErrorTagProps {
   type: 'grammar' | 'vocabulary' | 'pronunciation'
   original: string
@@ -5,9 +7,9 @@ interface ErrorTagProps {
 }
 
 const TYPE_COLORS = {
-  grammar: '#fdcb6e',
-  vocabulary: '#6c5ce7',
-  pronunciation: '#ff6b6b',
+  grammar: '#fbbf24',
+  vocabulary: '#a78bfa',
+  pronunciation: '#f87171',
 }
 
 export default function ErrorTag({ type, original, suggestion }: ErrorTagProps) {

@@ -1,3 +1,5 @@
+import './ScenarioCard.css'
+
 interface ScenarioCardProps {
   id: string
   title: string
