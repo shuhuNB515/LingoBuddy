@@ -1,0 +1,208 @@
+.practice-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--bg-dark);
+}
+
+.practice-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.back-btn {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-light);
+  color: var(--primary-light);
+  font-size: 0.95rem;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--primary);
+}
+
+.timer {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-green);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 1px;
+}
+
+.practice-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 20px;
+  overflow: hidden;
+}
+
+.conversation-area {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 20px;
+  overflow: hidden;
+}
+
+.transcript {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  overflow-y: auto;
+}
+
+.message {
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  max-width: 80%;
+  line-height: 1.5;
+}
+
+.message.ai {
+  align-self: flex-start;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-light);
+}
+
+.message.user {
+  align-self: flex-end;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  box-shadow: 0 2px 12px rgba(124, 92, 252, 0.25);
+}
+
+.speaker {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.6;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.error-panel {
+  padding: 24px;
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  overflow-y: auto;
+}
+
+.error-panel h3 {
+  font-size: 1rem;
+  margin-bottom: 16px;
+  color: var(--accent-orange);
+  font-weight: 600;
+}
+
+.no-errors {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 20px;
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+}
+
+.btn-start {
+  padding: 16px 48px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  background: linear-gradient(135deg, var(--primary), var(--accent-green));
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(124, 92, 252, 0.3);
+}
+
+.btn-start:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(124, 92, 252, 0.45);
+}
+
+.btn-start:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-stop {
+  padding: 16px 48px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  background: linear-gradient(135deg, var(--accent-red), #dc2626);
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(248, 113, 113, 0.3);
+}
+
+.btn-stop:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(248, 113, 113, 0.45);
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent-red);
+}
+
+.dot.connected {
+  background: var(--accent-green);
+  box-shadow: 0 0 8px rgba(52, 211, 153, 0.5);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
