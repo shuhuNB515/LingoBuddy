@@ -128,7 +128,7 @@ export default function HomePage() {
       </header>
 
       <section className="scenarios-section">
-        <h2>Choose a Scenario</h2>
+        <h2>选择场景</h2>
         <div className="scenarios-grid">
           {SCENARIOS.map((scenario) => (
             <ScenarioCard
@@ -142,7 +142,7 @@ export default function HomePage() {
 
       {history.length > 0 && (
         <section className="history-section">
-          <h2>Recent Sessions</h2>
+          <h2>最近练习</h2>
           <div className="history-list">
             {history.slice(-5).reverse().map((session) => (
               <div
