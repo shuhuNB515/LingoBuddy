@@ -4,7 +4,7 @@ interface ScenarioCardProps {
   id: string
   title: string
   subtitle: string
-  icon: string
+  icon: React.ReactNode
   difficulty: string
   onSelect: () => void
 }
